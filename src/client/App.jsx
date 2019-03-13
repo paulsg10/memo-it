@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
-import MemoCreator from './MemoCreator';
-import MemosDisplay from './MemosDisplay';
+import MemoCreator from './components/MemoCreator';
+import MemosDisplay from './components/MemosDisplay';
 import Axios from 'axios';
 
 class App extends Component {
@@ -29,7 +29,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Hello, World!</h1>
+        <h1>Memo It!</h1>
         <MemoCreator handleSubmitMemo={() => handleSubmitMemo()} />
         <MemosDisplay memoList={memoList} />
       </div>
