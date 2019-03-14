@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
+import axios from 'axios';
 import MemoCreator from './components/MemoCreator';
 import MemosDisplay from './components/MemosDisplay';
-import axios from 'axios';
 
 class App extends Component {
   constructor(props) {
@@ -15,45 +15,47 @@ class App extends Component {
   componentDidMount() {
     const { memoList } = this.state;
 
-    const memoListCopy = memoList.slice();
+    let memoListCopy;
 
     // AXIOS call for all memos
-    axios({
-      method: 'get',
-      url: '/memos',
-    })
-      .then((data) => {
-        return data.json();
+    axios.get('http://localhost:3000/getMemos')
+      .then((res) => {
+        memoListCopy = memoList.slice();
+        memoListCopy = res.data;
+        if (memoListCopy) {
+          this.setState({
+            memoList: memoListCopy,
+          });
+        }
       })
-      .then((memoList) => {
-        memoListCopy.push(memoList);
-        this.setState({
-          memoList: memoListCopy,
-        });
+      .catch((err) => {
+        console.log(err);
       });
   }
 
   handleSubmitMemo(title, text) {
     const { memoList } = this.state;
-    const memoListCopy = memoList.slice();
+    let memoListCopy;
 
     // AXIOS call to post new memo
     axios({
       method: 'post',
-      url: '/memos',
+      url: 'http://localhost:3000/addMemo',
       data: {
         memoTitle: title,
         memoText: text,
       },
     })
-      .then((data) => {
-        return data.json();
-      })
-      .then((newMemo) => {
+      .then((res) => {
+        memoListCopy = memoList.slice();
+        const newMemo = res.data;
         memoListCopy.push(newMemo);
         this.setState({
           memoList: memoListCopy,
         });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
 

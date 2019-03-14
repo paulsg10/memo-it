@@ -46,17 +46,16 @@ class MemoCreator extends Component {
 
   render() {
     const { memoTitle, memoText } = this.state;
+
     return (
-      <div>
+      <div className="memo-creator">
         <p>Create a new memo!</p>
-        <form className="form">
+        <form className="form" onSubmit={event => this.handleSubmit(event)}>
           <input required type="text" placeholder="Enter Memo Title" value={memoTitle} onChange={event => this.handleTitleChange(event)} />
           <br />
+          <textarea required rows="5" cols="28" placeholder="Enter Memo Here..." value={memoText} onChange={event => this.handleTextChange(event)} />
           <br />
-          <textarea required rows="5" cols="28" placeholder="Take a memo..." value={memoText} onChange={event => this.handleTextChange(event)} />
-          <br />
-          <br />
-          <button type="button" className="post-button" onSubmit={event => this.handleSubmit(event)}>Post</button>
+          <input type="submit" className="post-button" value="Post" />
         </form>
       </div>
     );

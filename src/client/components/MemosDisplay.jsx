@@ -12,7 +12,7 @@ const MemosDisplay = (props) => {
   });
 
   return (
-    <div>
+    <div className="memos-display">
       <p>Memos Display Component</p>
       <div className="memos-container">
         {displayMemos}
