@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 
 const app = express();
 const mongoose = require('mongoose');
@@ -10,9 +11,13 @@ require('dotenv').config();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(__dirname + '/../../dist'));
-
 // REST API
+app.get('/memos', memoController.getMemos);
+app.post('/memos', memoController.addMemo);
+// app.put('/edit', memoController.editMemo);
+app.delete('/delete', memoController.deleteMemo);
+
+app.use('/', express.static(path.join(__dirname, '/../../dist')));
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }, (err) => {
   if (err) console.log(err);
