@@ -5,6 +5,7 @@
   background: #f4f4ef;
 }
 
+/*
 .memo-creator {
   background: #fff;
   padding: 50px;
@@ -34,7 +35,6 @@
   width: 80%;
 }
 
-
 .form textarea {
   width: 80%;
   max-width: 80%;
@@ -60,11 +60,26 @@
   border: none;
   font-size: 20px;
 }
+*/
+
+.memos-container {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+}
 
 .memo {
   width: 30% ;
   background: #fff;
-  padding: 30px;
-  margin-bottom: 20px;
+  padding: 10px;
+  margin: 10px;
   box-shadow: 10px 10px 12px 0 rgba(46, 60, 73, 0.05);
+}
+
+.todo-creator {
+  margin-top: 10px;
+}
+
+.completed {
+  text-decoration: line-through;
 }

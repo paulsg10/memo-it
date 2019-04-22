@@ -13,4 +13,4 @@ const memoSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model('Memo', memoSchema);
+module.exports = mongoose.model('memos', memoSchema);

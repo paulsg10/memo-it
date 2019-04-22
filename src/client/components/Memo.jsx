@@ -2,10 +2,11 @@ import React from 'react';
 
 const Memo = (props) => {
   const { memoTitle, memoText } = props;
+
   return (
     <div className="memo">
-      <h3 className="memo-title">{memoTitle}</h3>
-      <p className="memo-text">{memoText}</p>
+      <h6 className="memo-title">{memoTitle}</h6>
+      <span className="memo-text">{memoText}</span>
     </div>
   );
 };

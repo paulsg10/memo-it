@@ -31,8 +31,7 @@ module.exports = {
   },
   devServer: {
     contentBase: path.resolve(__dirname, './dist'),
-    // port: 3000,
-    // publicPath: 'http://localhost:3000/dist/',
+    historyApiFallback: true,
   },
   plugins: [HTMLWebPackPlugin],
 };

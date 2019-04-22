@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class MemoCreator extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       memoTitle: '',
       memoText: '',
@@ -30,7 +31,6 @@ class MemoCreator extends Component {
     event.preventDefault();
     const title = memoTitle.trim();
     const text = memoText.trim();
-    console.log(title, text);
 
     if (!title || !text) {
       return;
@@ -49,7 +49,7 @@ class MemoCreator extends Component {
 
     return (
       <div className="memo-creator">
-        <p>Create a new memo!</p>
+        <h3>Create a new memo!</h3>
         <form className="form" onSubmit={event => this.handleSubmit(event)}>
           <input required type="text" placeholder="Enter Memo Title" value={memoTitle} onChange={event => this.handleTitleChange(event)} />
           <br />

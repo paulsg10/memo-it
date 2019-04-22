@@ -6,10 +6,10 @@
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --mode development --open --hot",
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production",
-    "server": "nodemon src/server/server.js"
+    "dev-server": "nodemon src/server/server.js",
+    "dev-webpack": "webpack-dev-server --config webpack.config.js --mode development --open --hot",
+    "dev-start": "yarn dev-webpack & yarn dev-server",
+    "build": "webpack --config webpack.config.js --mode production"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -27,10 +27,12 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "bootstrap": "^4.3.1",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "mongoose": "^5.4.19",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "react-router-dom": "^4.3.1"
   }
 }

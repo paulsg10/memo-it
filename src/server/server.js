@@ -5,6 +5,7 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const memoController = require('./controllers/memoController.js');
+const todoController = require('./controllers/todoController.js');
 
 require('dotenv').config();
 
@@ -19,11 +20,23 @@ app.use((req, res, next) => {
 
 // (express.static(path.resolve(__dirname, '/../../dist')));
 
-// REST API
+// REST API for memos
 app.get('/getMemos', memoController.getMemos);
 app.post('/addMemo', memoController.addMemo);
 // app.put('/edit', memoController.editMemo);
 app.delete('/deleteMemo', memoController.deleteMemo);
+
+// REST API for todos
+app.get('/getTodos', todoController.getTodos);
+app.get('/todos/:id', todoController.getTodo);
+app.post('/addTodo', todoController.addTodo);
+app.post('/update/:id', todoController.updateTodo);
+app.delete('/deleteTodo', todoController.deleteTodo);
+
+// Catch all route for react-router
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../../public/index.html'));
+});
 
 app.use(express.static(path.join(__dirname, '/../../dist')));
 

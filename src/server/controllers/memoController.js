@@ -1,8 +1,8 @@
-const Memo = require('../model/memoModel.js');
+const Memos = require('../model/memoModel.js');
 
 module.exports = {
   getMemos: (req, res) => {
-    Memo.find({})
+    Memos.find({})
       .then((data) => {
         res.json(data);
       })
@@ -14,7 +14,7 @@ module.exports = {
   addMemo: (req, res) => {
     const newMemo = req.body;
 
-    Memo.create(newMemo)
+    Memos.create(newMemo)
       .then((data) => {
         res.json(data);
       })
@@ -24,7 +24,7 @@ module.exports = {
       });
   },
   // editMemo: (req, res) => {
-  //   Memo.findOneAndUpdate(req.body, { $set: { memoTile: , memoText: } }, { new: true })
+  //   Memos.findOneAndUpdate(req.body, { $set: { memoTile: , memoText: } }, { new: true })
   //   .then((data) => {
   //     res.json(data);
   //   })
@@ -33,7 +33,7 @@ module.exports = {
   //   })
   // },
   deleteMemo: (req, res) => {
-    Memo.findOneAndRemove({ _id: req.body.memoId })
+    Memos.findOneAndRemove({ _id: req.body.memoId })
       .then((data) => {
         res.json(data);
       })
